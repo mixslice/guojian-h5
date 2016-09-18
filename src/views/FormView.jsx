@@ -7,6 +7,7 @@ import {
   PhotoFrame,
   Button,
 } from 'components';
+import { browserHistory } from 'react-router';
 
 
 const styles = {
@@ -36,7 +37,10 @@ const FormView = () => (
       <TextField
         placeholder="手机"
       />
-      <Button style={styles.button}>提交</Button>
+      <Button
+        style={styles.button}
+        onClick={() => { browserHistory.push('/export'); }}
+      >提交</Button>
     </Base>
   </div>
 );

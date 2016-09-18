@@ -1,27 +1,31 @@
 import React, { PropTypes } from 'react';
-import { Button } from 'react-uikit-web';
+import { Base } from 'react-uikit-web';
 
 
 const styles = {
   root: {
+    textAlign: 'center',
     fontWeight: 500,
     lineHeight: 1,
     fontSize: '1.6em',
-    padding: '16px 36px',
+    paddingLeft: 36,
+    paddingRight: 36,
+    paddingTop: 16,
+    paddingBottom: 16,
     color: '#0166B6',
-    background: 'linear-gradient(#fff 50%, #E7F1FB)',
+    backgroundImage: 'linear-gradient(#fff 50%, #E7F1FB)',
     boxShadow: '5px 2.5px 27px rgba(0,0,0,0.32)',
   },
 };
 
-const MXButton = ({ children, style }) => (
-  <Button
-    size="large"
+const MXButton = ({ children, style, ...props }) => (
+  <Base
     rounded
-    style={{ ...style, ...styles.root }}
+    style={{ ...styles.root, ...style }}
+    {...props}
   >
     {children}
-  </Button>
+  </Base>
 );
 
 MXButton.propTypes = {

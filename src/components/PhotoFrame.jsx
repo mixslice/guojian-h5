@@ -18,8 +18,8 @@ const styles = {
   },
 };
 
-const PhotoFrame = ({ src }) => (
-  <Base p={1} style={styles.photoFrame}>
+const PhotoFrame = ({ src, ...props }) => (
+  <Base p={1} style={styles.photoFrame} {...props}>
     <Media
       mb={1}
       aspectRatio={1.5}

@@ -6,6 +6,7 @@ import {
   HomeView,
   FormView,
   EditView,
+  ExportView,
 } from 'views';
 
 
@@ -14,6 +15,7 @@ export default (
     <IndexRoute component={HomeView} />
     <Route path="form" component={FormView} />
     <Route path="edit" component={EditView} />
+    <Route path="export" component={ExportView} />
     <Route path="*" component={NotFound} status={404} />
   </Route>
 );
