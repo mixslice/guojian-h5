@@ -37,11 +37,12 @@ const FormView = () => (
       <TextField
         placeholder="手机"
       />
-      <Button
-        mb={2}
-        style={styles.button}
-        onClick={() => { browserHistory.push('/export'); }}
-      >提交</Button>
+      <Base pb={3}>
+        <Button
+          style={styles.button}
+          onClick={() => { browserHistory.push('/export'); }}
+        >提交</Button>
+      </Base>
     </Base>
   </div>
 );

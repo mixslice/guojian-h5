@@ -22,7 +22,7 @@ const styles = {
   },
   text: {
     textAlign: 'center',
-    fontSize: 20,
+    fontSize: 18,
     lineHeight: 1.8,
     fontWeight: 500,
   },
@@ -41,9 +41,9 @@ const HomeApp = ({ actions: { choosePhoto } }) => (
     <Base mb={3} style={styles.text}>
       十年时光，我们格外珍惜你的陪伴！<br />
       重温与益赛普相遇的那一刻，<br />
-      合影留下专属于你们的纪念吧！<br />
+      合影留下专属于你们的纪念吧！
     </Base>
-    <Base mx={3}>
+    <Base px={3} pb={3}>
       <Button
         mb={2}
         onClick={choosePhoto}

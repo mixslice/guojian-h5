@@ -58,13 +58,12 @@ const EditApp = ({
         >重拍</Button>
       </div>
     </div>
-    <div>
+    <Base pb={3}>
       <Button
-        mb={2}
         style={styles.next}
         onClick={() => { browserHistory.push('/form'); }}
       >下一步</Button>
-    </div>
+    </Base>
   </Base>
 );
 

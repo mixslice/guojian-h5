@@ -49,7 +49,7 @@ const styles = {
 
 const App = props => (
   <ThemeProvider theme={config} style={styles.root}>
-    <Base py={2}>
+    <Base pt={1} pb={2}>
       <Base style={styles.headerWrapper}>
         <div style={styles.header} />
       </Base>
