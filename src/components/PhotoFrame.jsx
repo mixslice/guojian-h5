@@ -19,11 +19,11 @@ const styles = {
   },
 };
 
-const PhotoFrame = ({ src, ...props }) => (
+const PhotoFrame = ({ src, isPortrait, ...props }) => (
   <Base p={1} style={styles.photoFrame} {...props}>
     <Media
       mb={1}
-      aspectRatio={4 / 3}
+      aspectRatio={isPortrait ? 0.75 : 4 / 3}
       src={src}
       backgroundColor="#000"
     />
@@ -33,6 +33,7 @@ const PhotoFrame = ({ src, ...props }) => (
 
 PhotoFrame.propTypes = {
   src: PropTypes.string,
+  isPortrait: PropTypes.bool,
 };
 
 export default PhotoFrame;

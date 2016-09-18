@@ -30,11 +30,16 @@ const styles = {
   },
 };
 
-const EditApp = ({ localId, actions: { choosePhoto } }) => (
+const EditApp = ({
+  localId,
+  isPortrait,
+  actions: { choosePhoto, rotatePhoto },
+}) => (
   <Base mx={3}>
     <PhotoFrame
       mb={3}
       src={localId}
+      isPortrait={isPortrait}
     />
     <div style={styles.table}>
       <div style={styles.left}>
@@ -42,6 +47,7 @@ const EditApp = ({ localId, actions: { choosePhoto } }) => (
           mb={2}
           mr={1}
           nopadding
+          onClick={rotatePhoto}
         >旋转照片</Button>
       </div>
       <div style={styles.right}>
@@ -65,13 +71,15 @@ const EditApp = ({ localId, actions: { choosePhoto } }) => (
 
 EditApp.propTypes = {
   localId: PropTypes.string.isRequired,
+  isPortrait: PropTypes.bool.isRequired,
   actions: PropTypes.object,
 };
 
 const mapStateToProps = ({
-    photo: { localId } = {},
+    photo: { localId, isPortrait } = {},
   }) => ({
     localId,
+    isPortrait,
   });
 
 export default connect(

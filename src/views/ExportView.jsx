@@ -29,7 +29,6 @@ const ExportView = () => (
       <PhotoFrame src="http://img5.imgtn.bdimg.com/it/u=56657079,2159212880&fm=11&gp=0.jpg" />
     </Base>
     <Base mx={3}>
-      <Button mb={2}>保存回忆</Button>
       <Button mb={2}>分享照片</Button>
     </Base>
   </div>

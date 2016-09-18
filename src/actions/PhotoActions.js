@@ -1,6 +1,7 @@
 import { browserHistory } from 'react-router';
 import {
   GET_LOCAL_ID,
+  ROTATE_PHOTO,
 } from 'constants';
 import wx from 'weixin-js-sdk';
 
@@ -11,6 +12,12 @@ function getLocalId(localId) {
     payload: {
       localId,
     },
+  };
+}
+
+export function rotatePhoto() {
+  return {
+    type: ROTATE_PHOTO,
   };
 }
 
