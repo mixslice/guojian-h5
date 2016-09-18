@@ -8,7 +8,8 @@ import {
   EditView,
   ExportView,
 } from 'views';
-
+import { loadWxConfig } from 'utils';
+// onChange={loadWxConfig}
 
 export default (
   <Route path="/" component={App}>

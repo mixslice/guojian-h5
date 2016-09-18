@@ -5,11 +5,13 @@ import { AppContainer } from 'react-hot-loader';
 import configureStore from 'store/configureStore';
 import { syncHistoryWithStore } from 'react-router-redux';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import { loadWxConfig } from 'utils';
 import Root from './Root';
 
 log.setLevel(__LOG_LEVEL__);
 log.info(`version: ${__VERSION__}`);
 injectTapEventPlugin();
+loadWxConfig();
 
 const store = configureStore(browserHistory);
 const history = syncHistoryWithStore(browserHistory, store);

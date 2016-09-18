@@ -13,9 +13,14 @@ const styles = {
     backgroundImage: 'url(http://odoy4ypd7.bkt.clouddn.com/%E8%83%8C%E6%99%AF%E5%8A%A0%E5%8F%B7.png)',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
+    backgroundAttachment: 'fixed',
   },
   headerWrapper: {
     paddingTop: '14.667%',
+    position: 'relative',
+  },
+  content: {
+    zIndex: 100,
     position: 'relative',
   },
   header: {
@@ -44,10 +49,12 @@ const styles = {
 
 const App = props => (
   <ThemeProvider theme={config} style={styles.root}>
-    <Base my={2} style={styles.headerWrapper}>
-      <div style={styles.header} />
+    <Base py={2}>
+      <Base style={styles.headerWrapper}>
+        <div style={styles.header} />
+      </Base>
     </Base>
-    {props.children}
+    <div style={styles.content}>{props.children}</div>
     <Base style={styles.footer} />
   </ThemeProvider>
 );

@@ -38,6 +38,7 @@ const FormView = () => (
         placeholder="手机"
       />
       <Button
+        mb={2}
         style={styles.button}
         onClick={() => { browserHistory.push('/export'); }}
       >提交</Button>
