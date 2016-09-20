@@ -1,9 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Base } from 'react-uikit-web';
-import {
-  PhotoFrame,
-  Button,
-} from 'components';
+import { Button } from 'components';
+import { PhotoFrameApp } from 'containers';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { PhotoActions } from 'actions';
@@ -22,8 +20,6 @@ const styles = {
 };
 
 const ExportApp = ({
-  localId,
-  isPortrait,
   actions,
 }) => (
   <div>
@@ -33,7 +29,7 @@ const ExportApp = ({
       未来请继续与我们同行！
     </p>
     <Base mx={4} mb={3}>
-      <PhotoFrame src={localId} isPortrait={isPortrait} />
+      <PhotoFrameApp />
     </Base>
     <Base mx={3} pb={3}>
       <Button>分享照片</Button>
@@ -42,17 +38,10 @@ const ExportApp = ({
 );
 
 ExportApp.propTypes = {
-  localId: PropTypes.string.isRequired,
-  isPortrait: PropTypes.bool.isRequired,
   actions: PropTypes.object,
 };
 
-const mapStateToProps = ({
-    photo: { localId, isPortrait } = {},
-  }) => ({
-    localId,
-    isPortrait,
-  });
+const mapStateToProps = () => ({});
 
 export default connect(
   mapStateToProps,

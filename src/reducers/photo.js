@@ -7,10 +7,10 @@ import {
 
 const initialState = {
   localId: null,
-  isPortrait: false,
+  rotation: 0,
 };
 
 export default createReducer(initialState, {
   [GET_LOCAL_ID]: (state, payload) => ({ ...state, localId: payload.localId }),
-  [ROTATE_PHOTO]: state => ({ ...state, isPortrait: !state.isPortrait }),
+  [ROTATE_PHOTO]: state => ({ ...state, rotation: (state.rotation + 90) % 360 }),
 });

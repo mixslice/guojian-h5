@@ -1,8 +1,6 @@
 import React, { PropTypes } from 'react';
-import {
-  Base,
-  Media,
-} from 'react-uikit-web';
+import { Base } from 'react-uikit-web';
+import { Media } from 'components';
 
 
 const styles = {
@@ -19,13 +17,15 @@ const styles = {
   },
 };
 
-const PhotoFrame = ({ src, isPortrait, ...props }) => (
+const PhotoFrame = ({ src, rotation, ...props }) => (
   <Base p={1} style={styles.photoFrame} {...props}>
     <Media
       mb={1}
-      aspectRatio={isPortrait ? 0.75 : 4 / 3}
-      src={src}
+      aspectRatio={2 / 3}
+      src={src || (__DEV__ && 'http://farm5.static.flickr.com/4123/4761632898_d861c88bb8_b.jpg')}
       backgroundColor="#000"
+      backgroundSize="cover"
+      rotation={rotation}
     />
     <Base style={styles.logo} />
   </Base>
@@ -33,7 +33,7 @@ const PhotoFrame = ({ src, isPortrait, ...props }) => (
 
 PhotoFrame.propTypes = {
   src: PropTypes.string,
-  isPortrait: PropTypes.bool,
+  rotation: PropTypes.number,
 };
 
 export default PhotoFrame;

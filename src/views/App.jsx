@@ -18,6 +18,7 @@ const styles = {
   headerWrapper: {
     paddingTop: '14.667%',
     position: 'relative',
+    marginRight: 10,
   },
   content: {
     zIndex: 100,

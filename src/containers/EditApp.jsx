@@ -1,9 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Base } from 'react-uikit-web';
-import {
-  Button,
-  PhotoFrame,
-} from 'components';
+import { Button } from 'components';
+import { PhotoFrameApp } from 'containers';
 import { browserHistory } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -31,16 +29,10 @@ const styles = {
 };
 
 const EditApp = ({
-  localId,
-  isPortrait,
   actions: { choosePhoto, rotatePhoto },
 }) => (
   <Base mx={3}>
-    <PhotoFrame
-      mb={3}
-      src={localId}
-      isPortrait={isPortrait}
-    />
+    <PhotoFrameApp mb={3} />
     <div style={styles.table}>
       <div style={styles.left}>
         <Button
@@ -69,17 +61,10 @@ const EditApp = ({
 
 
 EditApp.propTypes = {
-  localId: PropTypes.string.isRequired,
-  isPortrait: PropTypes.bool.isRequired,
   actions: PropTypes.object,
 };
 
-const mapStateToProps = ({
-    photo: { localId, isPortrait } = {},
-  }) => ({
-    localId,
-    isPortrait,
-  });
+const mapStateToProps = () => ({});
 
 export default connect(
   mapStateToProps,

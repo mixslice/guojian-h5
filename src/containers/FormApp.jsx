@@ -3,10 +3,8 @@ import {
   Base,
   TextField,
 } from 'react-uikit-web';
-import {
-  PhotoFrame,
-  Button,
-} from 'components';
+import { Button } from 'components';
+import { PhotoFrameApp } from 'containers';
 import { browserHistory } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -27,12 +25,11 @@ const styles = {
 
 const FormApp = ({
   localId,
-  isPortrait,
   actions,
 }) => (
   <div style={styles.root}>
     <Base px={4} mb={3}>
-      <PhotoFrame src={localId} isPortrait={isPortrait} />
+      <PhotoFrameApp />
     </Base>
     <Base px={3}>
       <p style={styles.text}>
@@ -56,16 +53,14 @@ const FormApp = ({
 
 FormApp.propTypes = {
   localId: PropTypes.string.isRequired,
-  isPortrait: PropTypes.bool.isRequired,
   actions: PropTypes.object,
 };
 
 const mapStateToProps = ({
-    photo: { localId, isPortrait } = {},
-  }) => ({
-    localId,
-    isPortrait,
-  });
+  photo: { localId } = {},
+}) => ({
+  localId,
+});
 
 export default connect(
   mapStateToProps,
