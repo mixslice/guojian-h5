@@ -17,7 +17,8 @@ var config = {
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
-      }
+      },
+      __SITE_URL__: JSON.stringify(process.env.SITE_URL || 'http://guojian.daguchuangyi.com/')
     }),
     new webpack.ProvidePlugin({
       log: "loglevel"

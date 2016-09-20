@@ -23,6 +23,7 @@
     "__DEV__": true,
     "__LOG_LEVEL__": true,
     "__VERSION__": false,
-    "__API_ROOT__": false
+    "__API_ROOT__": false,
+    "__SITE_URL__": false
   }
 }

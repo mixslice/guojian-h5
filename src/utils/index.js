@@ -1,4 +1,8 @@
 import wx from 'weixin-js-sdk';
+import 'isomorphic-fetch';
+import es6Promise from 'es6-promise';
+
+es6Promise.polyfill();
 
 export function createConstants(...constants) {
   return constants.reduce((acc, constant) => {
@@ -33,22 +37,36 @@ export function parseJSON(response) {
 }
 
 function getWxConfig() {
-  return {
-    debug: __DEV__,
-    appId: 'wx5285007f95adef29', // 必填，公众号的唯一标识
-    timestamp: 1474212704, // 必填，生成签名的时间戳
-    nonceStr: 'qBZ3uopks1ZcksF', // 必填，生成签名的随机串
-    signature: 'c9476e906fe63c23f4ff538095eb0c6dbe467224', // 必填，签名，见附录1
-    jsApiList: [
-      'chooseImage',
-      'uploadImage',
-      'downloadImage',
-      'onMenuShareTimeline',
-      'onMenuShareAppMessage',
-    ], // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-  };
+  return fetch('http://wechatapi.daguchuangyi.com/signatureTest', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      url: __SITE_URL__,
+    }),
+  })
+  .then(response => response.json());
 }
 
 export function loadWxConfig() {
-  wx.config(getWxConfig());
+  getWxConfig().then(({
+    appId, signature, timestamp, nonceStr,
+  }) => {
+    wx.config({
+      debug: __DEV__,
+      appId,
+      timestamp,
+      nonceStr,
+      signature,
+      jsApiList: [
+        'chooseImage',
+        'uploadImage',
+        'downloadImage',
+        'onMenuShareTimeline',
+        'onMenuShareAppMessage',
+      ], // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+    });
+  });
 }
