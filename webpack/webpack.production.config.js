@@ -2,12 +2,11 @@ var webpack = require('webpack');
 var WebpackConfig = require('webpack-config');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var git_hash = require("git-rev-sync").short();
-require("babel-polyfill");
 
 var config = {
   debug: false,
   entry: [
-    'babel-polyfill', './src/index'
+    './src/index'
   ],
   plugins: [
     new HtmlWebpackPlugin({

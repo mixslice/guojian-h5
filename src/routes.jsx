@@ -1,8 +1,7 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import { Route, IndexRoute, Redirect } from 'react-router';
 import {
   App,
-  NotFound,
   HomeView,
   FormView,
   EditView,
@@ -17,6 +16,6 @@ export default (
     <Route path="form" component={FormView} />
     <Route path="edit" component={EditView} />
     <Route path="export" component={ExportView} />
-    <Route path="*" component={NotFound} status={404} />
+    <Redirect from="*" to="/" />
   </Route>
 );

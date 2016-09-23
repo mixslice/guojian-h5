@@ -1,7 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
-import api from 'middleware/api';
 import { default as rootReducer } from 'reducers';
 
 
@@ -10,7 +9,6 @@ export default (history, initialState = {}) => {
     // Middleware you want to use in development:
     applyMiddleware(
       thunk,
-      api,
       routerMiddleware(history)
     ),
     // Required! Enable Redux DevTools with the monitors you chose

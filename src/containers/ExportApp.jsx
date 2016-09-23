@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Base } from 'react-uikit-web';
 import { Button } from 'components';
-import { PhotoFrameApp } from 'containers';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { PhotoActions } from 'actions';
@@ -20,7 +19,8 @@ const styles = {
 };
 
 const ExportApp = ({
-  actions,
+  remoteUrl,
+  actions: { sharePhoto },
 }) => (
   <div>
     <p style={styles.text}>
@@ -29,19 +29,24 @@ const ExportApp = ({
       未来请继续与我们同行！
     </p>
     <Base mx={4} mb={3}>
-      <PhotoFrameApp />
+      <img src={remoteUrl} alt="" />
     </Base>
     <Base mx={3} pb={3}>
-      <Button>分享照片</Button>
+      <Button onClick={sharePhoto}>分享照片</Button>
     </Base>
   </div>
 );
 
 ExportApp.propTypes = {
+  remoteUrl: PropTypes.string,
   actions: PropTypes.object,
 };
 
-const mapStateToProps = () => ({});
+const mapStateToProps = ({
+  photo: { remoteUrl } = {},
+}) => ({
+  remoteUrl,
+});
 
 export default connect(
   mapStateToProps,

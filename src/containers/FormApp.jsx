@@ -5,7 +5,6 @@ import {
 } from 'react-uikit-web';
 import { Button } from 'components';
 import { PhotoFrameApp } from 'containers';
-import { browserHistory } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { PhotoActions } from 'actions';
@@ -24,8 +23,9 @@ const styles = {
 };
 
 const FormApp = ({
-  localId,
-  actions,
+  userName,
+  mobile,
+  actions: { submitPhoto, updateName, updateMobile },
 }) => (
   <div style={styles.root}>
     <Base px={4} mb={3}>
@@ -37,14 +37,18 @@ const FormApp = ({
       </p>
       <TextField
         placeholder="姓名"
+        value={userName}
+        onChange={(e) => { updateName(e.target.value); }}
       />
       <TextField
         placeholder="手机"
+        value={mobile}
+        onChange={(e) => { updateMobile(e.target.value); }}
       />
       <Base pb={3}>
         <Button
           style={styles.button}
-          onClick={() => { browserHistory.push('/export'); }}
+          onClick={submitPhoto}
         >提交</Button>
       </Base>
     </Base>
@@ -52,14 +56,16 @@ const FormApp = ({
 );
 
 FormApp.propTypes = {
-  localId: PropTypes.string.isRequired,
   actions: PropTypes.object,
+  mobile: PropTypes.string,
+  userName: PropTypes.string,
 };
 
 const mapStateToProps = ({
-  photo: { localId } = {},
+  photo: { mobile, userName } = {},
 }) => ({
-  localId,
+  mobile,
+  userName,
 });
 
 export default connect(

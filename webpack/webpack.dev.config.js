@@ -16,7 +16,7 @@ var config = {
       __VERSION__: JSON.stringify(process.env.npm_package_version),
       __DEV__: true,  // <-------- DISABLE redux-devtools HERE
       __LOG_LEVEL__: JSON.stringify(process.env.LOG_LEVEL || 'trace'),
-      __API_ROOT__: JSON.stringify(process.env.API_ROOT || 'http://api.example.com/')
+      __API_ROOT__: JSON.stringify(process.env.API_ROOT || 'http://localhost:3001')
     })
   ]
 };

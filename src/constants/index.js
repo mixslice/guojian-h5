@@ -6,4 +6,7 @@ module.exports = createConstants(
   'RESET_ERROR_MESSAGE',
   'GET_LOCAL_ID',
   'ROTATE_PHOTO',
+  'SAVE_REMOTE_PHOTO',
+  'UPDATE_USERNAME',
+  'UPDATE_MOBILE',
 );
