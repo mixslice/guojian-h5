@@ -8,6 +8,10 @@ import {
   UPLOADING_STATUS,
 } from 'constants';
 import wx from 'weixin-js-sdk';
+import 'isomorphic-fetch';
+import es6Promise from 'es6-promise';
+
+es6Promise.polyfill();
 
 
 export function updateName(value) {
