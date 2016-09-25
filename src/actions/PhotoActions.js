@@ -5,6 +5,7 @@ import {
   SAVE_REMOTE_PHOTO,
   UPDATE_USERNAME,
   UPDATE_MOBILE,
+  UPLOADING_STATUS,
 } from 'constants';
 import wx from 'weixin-js-sdk';
 
@@ -64,16 +65,31 @@ export function choosePhoto() {
   };
 }
 
+function beginUploading() {
+  return {
+    type: UPLOADING_STATUS,
+    payload: true,
+  };
+}
+
+function endUploading() {
+  return {
+    type: UPLOADING_STATUS,
+    payload: false,
+  };
+}
+
 export function submitPhoto() {
   return (dispatch, getState) => {
     const { photo: { name, mobile, localId } } = getState();
     // todo: upload to weixin server
-
+    dispatch(beginUploading());
     wx.uploadImage({
       localId,
       isShowProgressTips: 1, // 默认为1，显示进度提示
       success: (res) => {
         const serverId = res.serverId; // 返回图片的服务器端ID
+        dispatch(beginUploading());
         fetch(`${__API_ROOT__}/upload`, {
           method: 'POST',
           headers: {
@@ -86,10 +102,13 @@ export function submitPhoto() {
             serverId,
           }),
         })
+        .then(response => response.json())
         .then((data) => {
+          dispatch(endUploading());
           dispatch(saveRemotePhoto(`${__API_ROOT__}${data.image}`));
           browserHistory.push('/export');
-        });
+        })
+        .catch(() => dispatch(endUploading()));
       },
     });
   };

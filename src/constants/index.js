@@ -9,4 +9,5 @@ module.exports = createConstants(
   'SAVE_REMOTE_PHOTO',
   'UPDATE_USERNAME',
   'UPDATE_MOBILE',
+  'UPLOADING_STATUS',
 );

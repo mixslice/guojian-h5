@@ -19,7 +19,7 @@ var config = {
       __VERSION__: JSON.stringify(process.env.npm_package_version + '(' + git_hash + ')'),
       __DEV__: false,
       __LOG_LEVEL__: JSON.stringify(process.env.LOG_LEVEL || 'info'),
-      __API_ROOT__: JSON.stringify(process.env.API_ROOT || 'http://api.example.com/')
+      __API_ROOT__: JSON.stringify(process.env.API_ROOT || 'http://120.25.56.235:3001')
     }),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {

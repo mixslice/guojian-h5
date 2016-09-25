@@ -5,6 +5,7 @@ import {
   SAVE_REMOTE_PHOTO,
   UPDATE_USERNAME,
   UPDATE_MOBILE,
+  UPLOADING_STATUS,
 } from 'constants';
 
 
@@ -14,6 +15,7 @@ const initialState = {
   rotation: 0,
   userName: '',
   mobile: '',
+  isUploading: false,
 };
 
 export default createReducer(initialState, {
@@ -22,4 +24,5 @@ export default createReducer(initialState, {
   [ROTATE_PHOTO]: state => ({ ...state, rotation: (state.rotation + 90) % 360 }),
   [UPDATE_USERNAME]: (state, payload) => ({ ...state, userName: payload }),
   [UPDATE_MOBILE]: (state, payload) => ({ ...state, mobile: payload }),
+  [UPLOADING_STATUS]: (state, payload) => ({ ...state, isUploading: payload }),
 });

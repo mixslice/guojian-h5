@@ -25,33 +25,36 @@ const styles = {
 const FormApp = ({
   userName,
   mobile,
+  isUploading,
   actions: { submitPhoto, updateName, updateMobile },
 }) => (
   <div style={styles.root}>
     <Base px={4} mb={3}>
       <PhotoFrameApp />
     </Base>
-    <Base px={3}>
-      <p style={styles.text}>
-        填写个人信息并提交，即可在服务台领取合影相片，留作纪念！
-      </p>
-      <TextField
-        placeholder="姓名"
-        value={userName}
-        onChange={(e) => { updateName(e.target.value); }}
-      />
-      <TextField
-        placeholder="手机"
-        value={mobile}
-        onChange={(e) => { updateMobile(e.target.value); }}
-      />
-      <Base pb={3}>
-        <Button
-          style={styles.button}
-          onClick={submitPhoto}
-        >提交</Button>
-      </Base>
-    </Base>
+    {isUploading
+      ? '正在上传'
+      : (<Base px={3}>
+        <p style={styles.text}>
+          填写个人信息并提交，即可在服务台领取合影相片，留作纪念！
+        </p>
+        <TextField
+          placeholder="姓名"
+          value={userName}
+          onChange={(e) => { updateName(e.target.value); }}
+        />
+        <TextField
+          placeholder="手机"
+          value={mobile}
+          onChange={(e) => { updateMobile(e.target.value); }}
+        />
+        <Base pb={3}>
+          <Button
+            style={styles.button}
+            onClick={submitPhoto}
+          >提交</Button>
+        </Base>
+      </Base>)}
   </div>
 );
 
@@ -59,13 +62,15 @@ FormApp.propTypes = {
   actions: PropTypes.object,
   mobile: PropTypes.string,
   userName: PropTypes.string,
+  isUploading: PropTypes.bool,
 };
 
 const mapStateToProps = ({
-  photo: { mobile, userName } = {},
+  photo: { mobile, userName, isUploading } = {},
 }) => ({
   mobile,
   userName,
+  isUploading,
 });
 
 export default connect(
