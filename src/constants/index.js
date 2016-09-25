@@ -10,4 +10,5 @@ module.exports = createConstants(
   'UPDATE_USERNAME',
   'UPDATE_MOBILE',
   'UPLOADING_STATUS',
+  'SHOWS_SHARE_OVERLAY',
 );

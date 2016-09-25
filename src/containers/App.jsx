@@ -4,6 +4,9 @@ import {
   Base,
 } from 'react-uikit-web';
 import config from 'utils/config';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { PhotoActions } from 'actions';
 
 
 const styles = {
@@ -46,22 +49,70 @@ const styles = {
     backgroundPosition: 'bottom center',
     backgroundSize: 'contain',
   },
+  overlay: {
+    boxSizing: 'border-box',
+    height: '100%',
+    width: '100%',
+    position: 'fixed',
+    zIndex: 500,
+    left: 0,
+    top: 0,
+    backgroundColor: 'rgba(10,37,77, 0.66)',
+    overflowX: 'hidden',
+    color: '#fff',
+    fontSize: 20,
+    lineHeight: 1.8,
+    fontWeight: 500,
+    textAlign: 'center',
+  },
+  arrow: {
+    boxSizing: 'border-box',
+    width: '100%',
+    height: '140px',
+    backgroundImage: 'url(http://odoy4ypd7.bkt.clouddn.com/%E7%AE%AD%E5%A4%B4.png)',
+    backgroundSize: 'contain',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'top right',
+  },
 };
 
-const App = props => (
+const App = ({
+  showsShareOverlay,
+  children,
+  actions: { hideOverlay },
+}) => (
   <ThemeProvider theme={config} style={styles.root}>
     <Base pt={1} pb={2}>
       <Base style={styles.headerWrapper}>
         <div style={styles.header} />
       </Base>
     </Base>
-    <div style={styles.content}>{props.children}</div>
+    <div style={styles.content}>{children}</div>
     <Base style={styles.footer} />
+    {showsShareOverlay
+      ? (<Base pr={2} pt={1} style={styles.overlay} onClick={hideOverlay}>
+        <div style={styles.arrow} />
+        <Base mt={3}>点击右上角分享朋友圈</Base>
+      </Base>)
+      : null}
   </ThemeProvider>
 );
 
 App.propTypes = {
   children: PropTypes.node,
+  showsShareOverlay: PropTypes.bool,
+  actions: PropTypes.object,
 };
 
-export default App;
+const mapStateToProps = ({
+  photo: { showsShareOverlay } = {},
+}) => ({
+  showsShareOverlay,
+});
+
+export default connect(
+  mapStateToProps,
+  dispatch => ({
+    actions: bindActionCreators(PhotoActions, dispatch),
+  })
+)(App);

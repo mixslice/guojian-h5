@@ -6,6 +6,7 @@ import {
   UPDATE_USERNAME,
   UPDATE_MOBILE,
   UPLOADING_STATUS,
+  SHOWS_SHARE_OVERLAY,
 } from 'constants';
 import wx from 'weixin-js-sdk';
 import 'isomorphic-fetch';
@@ -107,10 +108,19 @@ export function submitPhoto() {
           }),
         })
         .then(response => response.json())
-        .then((data) => {
+        .then(({ imageURI }) => {
           dispatch(endUploading());
-          dispatch(saveRemotePhoto(`${__API_ROOT__}${data.image}`));
+          dispatch(saveRemotePhoto(`${__API_ROOT__}${imageURI}`));
           browserHistory.push('/export');
+
+          const imageName = imageURI.substr(0, imageURI.lastIndexOf('.'));
+          const shareLink = `http://guojian.daguchuangyi.com${imageName}`;
+          wx.onMenuShareAppMessage({
+            link: shareLink, // 分享链接
+          });
+          wx.onMenuShareTimeline({
+            link: shareLink, // 分享链接
+          });
         })
         .catch(() => dispatch(endUploading()));
       },
@@ -119,5 +129,15 @@ export function submitPhoto() {
 }
 
 export function sharePhoto() {
-  // todo
+  return {
+    type: SHOWS_SHARE_OVERLAY,
+    payload: true,
+  };
+}
+
+export function hideOverlay() {
+  return {
+    type: SHOWS_SHARE_OVERLAY,
+    payload: false,
+  };
 }

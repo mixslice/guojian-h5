@@ -6,6 +6,7 @@ import {
   UPDATE_USERNAME,
   UPDATE_MOBILE,
   UPLOADING_STATUS,
+  SHOWS_SHARE_OVERLAY,
 } from 'constants';
 
 
@@ -16,6 +17,7 @@ const initialState = {
   userName: '',
   mobile: '',
   isUploading: false,
+  showsShareOverlay: false,
 };
 
 export default createReducer(initialState, {
@@ -25,4 +27,5 @@ export default createReducer(initialState, {
   [UPDATE_USERNAME]: (state, payload) => ({ ...state, userName: payload }),
   [UPDATE_MOBILE]: (state, payload) => ({ ...state, mobile: payload }),
   [UPLOADING_STATUS]: (state, payload) => ({ ...state, isUploading: payload }),
+  [SHOWS_SHARE_OVERLAY]: (state, payload) => ({ ...state, showsShareOverlay: payload }),
 });

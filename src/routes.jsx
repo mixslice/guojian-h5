@@ -2,20 +2,22 @@ import React from 'react';
 import { Route, IndexRoute, Redirect } from 'react-router';
 import {
   App,
-  HomeView,
-  FormView,
-  EditView,
-  ExportView,
-} from 'views';
-import { loadWxConfig } from 'utils';
+  HomeApp,
+  FormApp,
+  EditApp,
+  ExportApp,
+  ShareApp,
+} from 'containers';
+// import { loadWxConfig } from 'utils';
 // onChange={loadWxConfig}
 
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={HomeView} />
-    <Route path="form" component={FormView} />
-    <Route path="edit" component={EditView} />
-    <Route path="export" component={ExportView} />
+    <IndexRoute component={HomeApp} />
+    <Route path="form" component={FormApp} />
+    <Route path="edit" component={EditApp} />
+    <Route path="export" component={ExportApp} />
+    <Route path="image/:uid" component={ShareApp} />
     <Redirect from="*" to="/" />
   </Route>
 );
