@@ -108,7 +108,7 @@ export function submitPhoto() {
           }),
         })
         .then(response => response.json())
-        .then(({ imageURI }) => {
+        .then(({ image: imageURI }) => {
           dispatch(endUploading());
           dispatch(saveRemotePhoto(`${__API_ROOT__}${imageURI}`));
           browserHistory.push('/export');

@@ -33,7 +33,7 @@ const ExportApp = ({
       未来请继续与我们同行！
     </p>
     <Base mx={4} mb={3}>
-      <img style={styles.img} src={remoteUrl || 'http://localhost:3001/image/Sep24_23-54-59.jpg'} alt="" />
+      <img style={styles.img} src={remoteUrl} alt="" />
       <p style={styles.text}>长按上方图片保存到本地</p>
     </Base>
     <Base mx={3} pb={3}>
