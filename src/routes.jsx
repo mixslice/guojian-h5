@@ -8,11 +8,12 @@ import {
   ExportApp,
   ShareApp,
 } from 'containers';
-import { loadWxConfig } from 'utils';
+// import { loadWxConfig } from 'utils';
+// onChange={loadWxConfig}
 
 
 export default (
-  <Route path="/" component={App} onChange={loadWxConfig}>
+  <Route path="/" component={App}>
     <IndexRoute component={HomeApp} />
     <Route path="form" component={FormApp} />
     <Route path="edit" component={EditApp} />
